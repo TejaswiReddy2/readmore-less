@@ -1,0 +1,94 @@
+<style type="text/css">
+	*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+.box-two{
+	margin: 2% 5%;
+	border-top: 3px solid #db0c90;
+	width: 90%;
+	height: auto;
+	float: left;
+	background-color: #f3f3f9;
+	padding-bottom: 30px;
+}
+.box-two>h6{
+	padding: 30px 30px 0px 50px;
+	color: rgb(0, 0, 0, 0.5);
+
+}
+div.box-two>p{
+	padding: 10px 10px 0px 50px;
+	color: #000;
+	font-family: verdana;
+	font-size: 14px;
+	line-height: 25px;
+}
+div.box-two p{
+	padding: 10px 30px 0px 50px;
+	color: rgb(0, 0, 0, 0.5);
+	font-family: verdana;
+	font-size: 11px;
+	line-height: 22px;
+}
+</style>
+ <h1 style="text-align:center; font-size:45px;">Read More - Less <span style="color: #db0c90">Box Area</span></h1>
+
+ <div class="box-two">
+ 	<h6>Box One</h6>
+ 	<p class="limitContent_1" id="1">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+ 	<p class="limitContenthide_1" id="h1" data-id="1">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<a class="showless" href="javascript:void(0)">ReadLess</a></p>
+ </div>
+ <div class="box-two">
+ 	<h6>Box Two</h6>
+ 	<p class="limitContent_2" id="2">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+ 	<p class="limitContenthide_2" id="h2" data-id="2">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.<a class="showless" href="javascript:void(0)">ReadLess</a></p>
+ </div>
+ <div class="box-two">
+ 	<h6>Box Three</h6>
+ 	<p class="limitContent_3" id="3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+ 	<p class="limitContenthide_3" id="h3" data-id="3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<a class="showless" href="javascript:void(0)">ReadLess</a></p>
+ </div>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script>
+$(document).ready(function(){
+$('.limitContenthide_1').hide();$('.limitContenthide_2').hide();$('.limitContenthide_3').hide();
+var content1 	 =	$('.limitContent_1').text();
+var getResult1	 =	getResult(content1,0,300);
+$('.limitContent_1').html(getResult1);
+
+var content2 	 =	$('.limitContent_2').text();
+var getResult2	 =	getResult(content2,0,300);
+$('.limitContent_2').html(getResult2);
+
+var content3 	 =	$('.limitContent_3').text();
+var getResult3	 =	getResult(content3,0,300);
+$('.limitContent_3').html(getResult3);
+});
+
+function getResult(content,start,end){
+	if(content.length > end){
+	  var showlimited = content.substring(start, end);
+	  var showWithDot =	showlimited+'...<a class="showthis" href="javascript:void(0)">ReadMore</a>';	
+	  return showWithDot;
+	}
+	else{
+	  var showlimited = content;
+	  return showlimited;
+	}
+	
+}
+</script>
+<script type="text/javascript">
+	$('p').on('click','.showthis',function(){
+		var curId = $(this).parent().attr('id');
+		$('#h'+curId).show();
+		$('#'+curId).hide();
+	});
+	$('p').on('click','.showless',function(){
+		var curId = $(this).parent().attr('data-id');
+		$('#h'+curId).hide();
+		$('#'+curId).show();
+	});
+</script>
